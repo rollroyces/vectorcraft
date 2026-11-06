@@ -104,6 +104,7 @@ jobs:
         run: packaging/macos/package.sh --arch universal
       - uses: actions/upload-artifact@v7
         with:
+          retention-days: 7
           name: release-macos
           path: dist/release/*
           if-no-files-found: error
@@ -169,6 +170,7 @@ jobs:
         run: ./packaging/windows/package.ps1 -Arch ${{ matrix.arch }}
       - uses: actions/upload-artifact@v7
         with:
+          retention-days: 7
           name: release-windows-${{ matrix.arch }}
           path: dist/release/*
           if-no-files-found: error
@@ -238,6 +240,7 @@ jobs:
           done
       - uses: actions/upload-artifact@v7
         with:
+          retention-days: 7
           name: release-linux-${{ matrix.arch }}
           path: dist/release/*
           if-no-files-found: error
@@ -276,6 +279,7 @@ jobs:
         run: packaging/linux/flatpak-bundle.sh "dist/linux/vectorcraft-$VECTORCRAFT_VERSION-linux-${{ matrix.arch }}.tar.gz"
       - uses: actions/upload-artifact@v7
         with:
+          retention-days: 7
           name: release-flatpak-${{ matrix.arch }}
           path: dist/release/*.flatpak
           if-no-files-found: error
@@ -330,6 +334,7 @@ jobs:
               | grep -E '/bin/vectorcraft$|/bin/vectorcraft-cli$|/share/applications/ai\.storyteller\.vectorcraft\.desktop$'
       - uses: actions/upload-artifact@v7
         with:
+          retention-days: 7
           name: release-freebsd
           path: dist/release/*
           if-no-files-found: error
@@ -373,6 +378,7 @@ jobs:
         run: packaging/web/package.sh
       - uses: actions/upload-artifact@v7
         with:
+          retention-days: 7
           name: release-web
           path: dist/release/*
           if-no-files-found: error
@@ -453,6 +459,7 @@ jobs:
           file target/riscv64gc-unknown-linux-gnu/release/vectorcraft | grep -F 'RISC-V'
       - uses: actions/upload-artifact@v7
         with:
+          retention-days: 7
           name: release-linux-riscv64
           path: dist/release/*.tar.gz
           if-no-files-found: error
